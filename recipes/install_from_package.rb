@@ -19,30 +19,31 @@
 #
 
 case node['platform_family']
-  when 'debian'    
-    repo = 'http://ppa.launchpad.net/rethinkdb/ppa/ubuntu'
-    packages = %w{ rethinkdb }  
-  
+  when 'debian'
+    # repo = 'http://ppa.launchpad.net/rethinkdb/ppa/ubuntu'
+    repo = 'http://download.rethinkdb.com/apt'
+    packages = %w{ rethinkdb }
+
     apt_repository 'rethinkdb' do
       uri repo
       distribution node['lsb']['codename']
       components ['main']
       keyserver "keyserver.ubuntu.com"
       key "11D62AD6"
-      action :add    
+      action :add
     end
-      
+
   else
     Chef::Log.error "There are no rethinkdb packages for this platform; please use the source or binary method to install node"
     return
 end
 
 packages.each do |pkg|
-  
+
   package "#{pkg}" do
     version "'#{node[pkg]['version']}*'"
     action :install
   end
-  
+
 end
 

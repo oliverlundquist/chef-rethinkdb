@@ -1,4 +1,4 @@
-name             'rethinkdb'
+name             'rethinkdb2'
 maintainer       'Make-o-Matic, LLC'
 maintainer_email 'v@aminev.me'
 license          'Apache 2.0'

@@ -28,8 +28,9 @@ case node['platform_family']
       uri repo
       distribution node['lsb']['codename']
       components ['main']
-      keyserver "keyserver.ubuntu.com"
-      key "11D62AD6"
+      #keyserver "keyserver.ubuntu.com"
+      #key "11D62AD6"
+      key "http://download.rethinkdb.com/apt/pubkey.gpg"
       action :add
     end
 
